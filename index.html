@@ -29,6 +29,13 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 .camino .etapa{z-index:1}
 @media (max-width:959px){.camino::before{display:none}}
 @media (max-width:640px){.camino{padding-top:0!important;padding-bottom:0!important}}
+.problema{display:flex;flex-direction:column;justify-content:space-between;gap:16px;background:#fbf7ee;border-radius:16px;padding:24px;text-decoration:none;border:2px solid transparent;transition:border-color .2s,transform .2s}
+.problema .ver{font-size:14px;font-weight:700;color:#8a5d14}
+.problema:hover,.problema:focus-visible{border-color:#d0902f;transform:translateY(-2px)}
+#etapa-1,#etapa-2,#etapa-3,#complemento{scroll-margin-top:24px}
+#etapa-1:target,#etapa-2:target,#etapa-3:target,#complemento:target{animation:resalto 2.4s ease}
+@keyframes resalto{0%,60%{box-shadow:0 0 0 5px #d0902f}100%{box-shadow:0 0 0 0 rgba(208,144,47,0)}}
+@media (prefers-reduced-motion:reduce){.problema{transition:none}.problema:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -68,14 +75,14 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 32px">
 <h2 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; color: #1f2216">¿Te pasa algo de esto?</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Vendés bien, pero no sabés si ganás.</p></div>
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Pusiste los precios a ojo y no los revisaste más.</p></div>
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Llegás a fin de mes sin saber adónde fue la plata.</p></div>
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">No sabés qué producto te deja más y cuál te hace perder.</p></div>
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Las comisiones y los impuestos se comen tu ganancia, y no sabés cuánto.</p></div>
-<div style="background: #fbf7ee; border-radius: 16px; padding: 24px"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Mezclás la plata del negocio con la tuya.</p></div>
+<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Vendés bien, pero no sabés si ganás.</p><span class="ver">Te ayuda: Diagnóstico de gestión →</span></a>
+<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Pusiste los precios a ojo y no los revisaste más.</p><span class="ver">Te ayuda: Precio justo →</span></a>
+<a class="problema" href="#etapa-3"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Llegás a fin de mes sin saber adónde fue la plata.</p><span class="ver">Te ayuda: Tablero mensual →</span></a>
+<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">No sabés qué producto te deja más y cuál te hace perder.</p><span class="ver">Te ayuda: Diagnóstico de gestión →</span></a>
+<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Las comisiones y los impuestos se comen tu ganancia, y no sabés cuánto.</p><span class="ver">Te ayuda: Precio justo →</span></a>
+<a class="problema" href="#complemento"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Mezclás la plata del negocio con la tuya.</p><span class="ver">Te ayuda: Herramienta a medida →</span></a>
 </div>
-<p style="margin: 0; font-size: 19px; color: #1f2216">La respuesta casi siempre está en tus números. Solo hay que ordenarlos y leerlos bien.</p>
+<p style="margin: 0; font-size: 19px; color: #1f2216">La respuesta casi siempre está en tus números. Solo hay que ordenarlos y leerlos bien. Tocá la que más te pase y te muestro cómo te ayudo.</p>
 </div>
 </section>
 
@@ -86,7 +93,7 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <p style="margin: 0; font-size: 18px; color: #5f6250">Empezá por donde lo necesites. Cada etapa suma sobre la anterior.</p>
 </div>
 <div class="camino" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; position: relative">
-<article class="etapa" style="background: #ffffff; border: 1px solid #ddd8c6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #1f2216; position: relative">
+<article id="etapa-1" class="etapa" style="background: #ffffff; border: 1px solid #ddd8c6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #1f2216; position: relative">
 <div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 50%; background: #4f5a26; color: #ffffff; display: inline-grid; place-items: center; font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; flex: none; box-shadow: 0 0 0 6px #fbf7ee">1</span><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a5d14">Etapa 1 · Ordenar los precios</span></div>
 
 <h3 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 24px; color: #4f5a26">Precio justo</h3>
@@ -95,7 +102,7 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <p style="margin: 0; font-size: 15px; color: #5f6250">Costo y margen de tus productos, propuesta de precios, planilla y una reunión.</p>
 <p style="margin: auto 0 0; padding-top: 12px; border-top: 1px solid #ddd8c6; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #8a5d14">Duración: 1 semana</p>
 </article>
-<article class="etapa" style="background: #4f5a26; border: none; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #ffffff; position: relative">
+<article id="etapa-2" class="etapa" style="background: #4f5a26; border: none; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #ffffff; position: relative">
 <div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 50%; background: #d0902f; color: #ffffff; display: inline-grid; place-items: center; font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; flex: none; box-shadow: 0 0 0 6px #fbf7ee">2</span><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e2e1c3">Etapa 2 · Entender el negocio</span></div>
 <span style="align-self: flex-start; background: #d0902f; color: #ffffff; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px">Recomendado</span>
 <h3 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 24px; color: #ffffff">Diagnóstico de gestión</h3>
@@ -104,7 +111,7 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <p style="margin: 0; font-size: 15px; color: #e2e1c3">Costo y margen por producto, resultado mensual, punto de equilibrio y precios. Informe con 3 hallazgos y 3 acciones.</p>
 <p style="margin: auto 0 0; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.25); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #e2e1c3">Duración: 2 a 3 semanas</p>
 </article>
-<article class="etapa" style="background: #ffffff; border: 1px solid #ddd8c6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #1f2216; position: relative">
+<article id="etapa-3" class="etapa" style="background: #ffffff; border: 1px solid #ddd8c6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; color: #1f2216; position: relative">
 <div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 50%; background: #4f5a26; color: #ffffff; display: inline-grid; place-items: center; font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; flex: none; box-shadow: 0 0 0 6px #fbf7ee">3</span><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a5d14">Etapa 3 · Seguir los números</span></div>
 
 <h3 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 24px; color: #4f5a26">Tablero mensual</h3>
@@ -114,7 +121,7 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <p style="margin: auto 0 0; padding-top: 12px; border-top: 1px solid #ddd8c6; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #8a5d14">Duración: Todos los meses</p>
 </article>
 </div>
-<article style="border: 2px dashed #a7a96a; border-radius: 16px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
+<article id="complemento" class="etapa-comp" style="border: 2px dashed #a7a96a; border-radius: 16px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 8px; max-width: 720px">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a5d14">Complemento · 1 a 2 semanas</span>
 <h3 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 22px; color: #4f5a26">Herramienta de gestión a medida</h3>

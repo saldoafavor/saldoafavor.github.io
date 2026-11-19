@@ -30,7 +30,8 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 @media (max-width:959px){.camino::before{display:none}}
 @media (max-width:640px){.camino{padding-top:0!important;padding-bottom:0!important}}
 .problema{display:flex;flex-direction:column;justify-content:space-between;gap:16px;background:#fbf7ee;border-radius:16px;padding:24px;text-decoration:none;border:2px solid transparent;transition:border-color .2s,transform .2s}
-.problema .ver{font-size:14px;font-weight:700;color:#8a5d14}
+.problema .ver{align-self:flex-end;font-size:22px;font-weight:700;color:#d0902f;line-height:1;transition:transform .2s}
+.problema:hover .ver{transform:translateX(4px)}
 .problema:hover,.problema:focus-visible{border-color:#d0902f;transform:translateY(-2px)}
 #etapa-1,#etapa-2,#etapa-3,#complemento{scroll-margin-top:24px}
 #etapa-1:target,#etapa-2:target,#etapa-3:target,#complemento:target{animation:resalto 2.4s ease}
@@ -75,12 +76,12 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 32px">
 <h2 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; color: #1f2216">¿Te pasa algo de esto?</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
-<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Vendés bien, pero no sabés si ganás.</p><span class="ver">Te ayuda: Diagnóstico de gestión →</span></a>
-<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Pusiste los precios a ojo y no los revisaste más.</p><span class="ver">Te ayuda: Precio justo →</span></a>
-<a class="problema" href="#etapa-3"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Llegás a fin de mes sin saber adónde fue la plata.</p><span class="ver">Te ayuda: Tablero mensual →</span></a>
-<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">No sabés qué producto te deja más y cuál te hace perder.</p><span class="ver">Te ayuda: Diagnóstico de gestión →</span></a>
-<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Las comisiones y los impuestos se comen tu ganancia, y no sabés cuánto.</p><span class="ver">Te ayuda: Precio justo →</span></a>
-<a class="problema" href="#complemento"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Mezclás la plata del negocio con la tuya.</p><span class="ver">Te ayuda: Herramienta a medida →</span></a>
+<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Vendés bien, pero no sabés si ganás.</p><span class="ver" aria-hidden="true">→</span></a>
+<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Pusiste los precios a ojo y no los revisaste más.</p><span class="ver" aria-hidden="true">→</span></a>
+<a class="problema" href="#etapa-3"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Llegás a fin de mes sin saber adónde fue la plata.</p><span class="ver" aria-hidden="true">→</span></a>
+<a class="problema" href="#etapa-2"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">No sabés qué producto te deja más y cuál te hace perder.</p><span class="ver" aria-hidden="true">→</span></a>
+<a class="problema" href="#etapa-1"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Las comisiones y los impuestos se comen tu ganancia, y no sabés cuánto.</p><span class="ver" aria-hidden="true">→</span></a>
+<a class="problema" href="#complemento"><p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px; color: #4f5a26">Mezclás la plata del negocio con la tuya.</p><span class="ver" aria-hidden="true">→</span></a>
 </div>
 <p style="margin: 0; font-size: 19px; color: #1f2216">La respuesta casi siempre está en tus números. Solo hay que ordenarlos y leerlos bien. Tocá la que más te pase y te muestro cómo te ayudo.</p>
 </div>

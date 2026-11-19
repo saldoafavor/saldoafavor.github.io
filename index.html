@@ -208,7 +208,16 @@ a:focus-visible{outline:3px solid #d0902f;outline-offset:3px}
 <div style="background: #fbf7ee; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; justify-content: center">
 <p style="margin: 0; font-family: Manrope, sans-serif; font-weight: 700; font-size: 22px; color: #1f2216">Escribime por donde te quede más cómodo</p>
 <a href="https://wa.me/5493585042012?text=Hola%20Josefina%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20consultarte%20por%20mi%20negocio." target="_blank" rel="noopener" style="text-decoration: none; background: #4f5a26; color: #ffffff; padding: 14px 24px; border-radius: 8px; font-weight: 700; text-align: center">Escribime por WhatsApp</a>
-<a href="mailto:saldoafavor.ar@gmail.com" style="text-decoration: none; border: 1.5px solid #4f5a26; color: #4f5a26; padding: 12.5px 22px; border-radius: 8px; font-weight: 700; text-align: center">Mandame un mail</a>
+<a href="mailto:saldoafavor.ar@gmail.com?subject=Consulta%20desde%20la%20p%C3%A1gina" style="text-decoration: none; border: 1.5px solid #4f5a26; color: #4f5a26; padding: 12.5px 22px; border-radius: 8px; font-weight: 700; text-align: center">Mandame un mail</a>
+<p style="margin: 0; font-size: 15px; color: #5f6250; text-align: center">o escribime a <strong style="color: #1f2216">saldoafavor.ar@gmail.com</strong> <button type="button" id="copiar-mail" style="margin-left: 6px; font: inherit; font-size: 13px; font-weight: 700; color: #4f5a26; background: transparent; border: 1px solid #a7a96a; border-radius: 6px; padding: 3px 10px; cursor: pointer">Copiar</button></p>
+<script>
+document.getElementById('copiar-mail').addEventListener('click', function () {
+  var b = this, m = 'saldoafavor.ar@gmail.com';
+  function ok() { b.textContent = '¡Copiado!'; setTimeout(function () { b.textContent = 'Copiar'; }, 2000); }
+  if (navigator.clipboard) { navigator.clipboard.writeText(m).then(ok, function () { window.prompt('Copiá el mail:', m); }); }
+  else { window.prompt('Copiá el mail:', m); }
+});
+</script>
 </div>
 </div>
 </section>

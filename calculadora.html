@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Tu precio te deja ganancia? · Saldo a Favor</title>
+<meta name="description" content="Calculadora gratis: cargá tu precio, tu costo y lo que te cobran por cada venta, y mirá cuánto te queda de verdad.">
+<meta property="og:title" content="¿Tu precio te deja ganancia? · Saldo a Favor">
+<meta property="og:description" content="Calculadora gratis para saber cuánto te queda de cada venta.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbf7ee'/%3E%3Cpath d='M10 54 L10 10 A44 44 0 0 1 54 54 Z' fill='%23e2e1c3'/%3E%3Cpath d='M10 54 L10 21 A33 33 0 0 1 43 54 Z' fill='%23a7a96a'/%3E%3Cpath d='M10 54 L10 32 A22 22 0 0 1 32 54 Z' fill='%234f5a26'/%3E%3Cpath d='M10 54 L10 43 A11 11 0 0 1 21 54 Z' fill='%23d0902f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--oliva:#4f5a26;--prof:#343b18;--medio:#a7a96a;--claro:#e2e1c3;--crema:#fbf7ee;--arena:#e8e1cf;--ocre:#d0902f;--ocret:#8a5d14;--tinta:#1f2216;--gris:#5f6250;--rojo:#a8452f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:"DM Sans",system-ui,sans-serif;font-size:17px;line-height:1.5}
+h1,h2,h3{font-family:Manrope,system-ui,sans-serif;color:var(--oliva);margin:0;letter-spacing:-.02em}
+a{color:var(--oliva)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--ocre);outline-offset:2px}
+header{max-width:1080px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca b{font-family:Manrope;font-weight:800;font-size:19px;color:var(--oliva);display:block;line-height:1.1}
+.marca small{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--ocret);text-transform:uppercase}
+.volver{font-weight:700;text-decoration:none;font-size:15px;white-space:nowrap}.vm{display:none}@media (max-width:520px){.vt{display:none}.vm{display:inline}}
+main{max-width:1080px;margin:0 auto;padding:8px 24px 64px}
+.intro{max-width:720px;margin:24px 0 32px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ocret)}
+.intro h1{font-size:46px;line-height:1.08;margin:10px 0 14px}
+.intro h1 em{font-style:normal;color:var(--ocre)}
+.intro p{margin:0;color:var(--gris);font-size:18px}
+.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:28px;align-items:start}
+@media (max-width:880px){.grid{grid-template-columns:1fr}.intro h1{font-size:36px}}
+.bloque{background:#fff;border:1.5px solid #ddd8c6;border-radius:18px;padding:24px;margin-bottom:18px}
+.bloque h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--oliva);color:var(--crema);font-size:14px;flex:none}
+.ayuda{color:var(--gris);font-size:14.5px;margin:0 0 14px}
+.campo{display:grid;grid-template-columns:1fr 150px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid #efeadb}
+.campo:first-of-type{border-top:0}
+.campo label{font-weight:500}
+.campo label small{display:block;color:var(--gris);font-weight:400;font-size:13.5px}
+.inp{display:flex;align-items:center;border:1.5px solid #d6d0bd;border-radius:10px;background:var(--crema);padding:0 10px}
+.inp:focus-within{border-color:var(--oliva)}
+.inp span{color:var(--gris);font-weight:700;font-size:15px}
+.inp input{width:100%;border:0;background:transparent;font:inherit;font-weight:700;padding:10px 4px;text-align:right;color:var(--tinta);min-width:0}
+.inp input:focus{outline:none}
+@media (max-width:480px){.campo{grid-template-columns:1fr 128px}}
+details{margin-top:6px}
+summary{cursor:pointer;font-weight:700;color:var(--oliva);font-size:15px;padding:6px 0}
+.sub{background:var(--crema);border-radius:12px;padding:6px 14px;margin-top:6px}
+.sub .campo{border-top-color:#e8e1cf}
+.res{position:sticky;top:16px}
+.tarjeta{background:var(--prof);color:var(--crema);border-radius:20px;padding:26px}
+.tarjeta .eyebrow{color:#e0b55c}
+.grande{font-family:Manrope;font-weight:800;font-size:52px;line-height:1;margin:10px 0 4px;letter-spacing:-.03em}
+.pct{font-size:17px;opacity:.85}
+.tabla{width:100%;border-collapse:collapse;margin:20px 0 6px;font-size:15.5px}
+.tabla td{padding:8px 0;border-top:1px solid rgba(251,247,238,.14)}
+.tabla td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.tabla tr.neg td:last-child{color:#f0a58f}
+.tabla tr.tot td{font-weight:800;font-size:17px;border-top:2px solid rgba(251,247,238,.4)}
+.veredicto{border-radius:14px;padding:16px 18px;margin-top:16px;font-size:16px}
+.veredicto b{font-family:Manrope}
+.ok{background:#e5f0d5;color:#2d3612}
+.bajo{background:#f9eeda;color:#5c3d08}
+.mal{background:#fbe3dc;color:#6b2412}
+.equilibrio{background:rgba(251,247,238,.08);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:15.5px}
+.cta{display:block;text-align:center;background:var(--ocre);color:var(--prof);font-weight:800;font-family:Manrope;text-decoration:none;padding:15px 18px;border-radius:12px;margin-top:18px;font-size:17px}
+.cta:hover{background:#e0a645;color:var(--prof)}
+.nota{font-size:13.5px;color:var(--gris);margin-top:14px}
+.vacio{opacity:.8;font-size:16px;margin-top:12px}
+.reglas{max-width:1080px;margin:0 auto;padding:0 24px 56px}
+.reglas .caja{background:var(--arena);border-radius:18px;padding:26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:880px){.reglas .caja{grid-template-columns:1fr}}
+.reglas h3{font-size:17px;margin-bottom:6px}
+.reglas p{margin:0;color:#3b3e2e;font-size:15.5px}
+footer{background:var(--prof);color:var(--crema);padding:26px 24px;text-align:center;font-size:14.5px}
+footer a{color:#e0b55c}
+</style>
+</head>
+<body>
+<header>
+  <a class="marca" href="index.html" aria-label="Saldo a Favor, ir al inicio">
+    <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 60 L4 4 A56 56 0 0 1 60 60 Z" fill="#e2e1c3"/><path d="M4 60 L4 18 A42 42 0 0 1 46 60 Z" fill="#a7a96a"/><path d="M4 60 L4 32 A28 28 0 0 1 32 60 Z" fill="#4f5a26"/><path d="M4 60 L4 46 A14 14 0 0 1 18 60 Z" fill="#d0902f"/></svg>
+    <span><b>Saldo a Favor</b><small>Consultoría de gestión</small></span>
+  </a>
+  <a class="volver" href="index.html">← <span class="vt">Volver a la página</span><span class="vm">Inicio</span></a>
+</header>
+
+<main>
+  <div class="intro">
+    <div class="eyebrow">Calculadora gratis</div>
+    <h1>¿Tu precio te deja <em>ganancia</em>?</h1>
+    <p>Cargá el precio de un producto, lo que te cuesta y lo que te cobran por cada venta. Te muestro cuánto te queda de verdad y a qué precio deberías venderlo.</p>
+  </div>
+
+  <div class="grid">
+    <form id="f" autocomplete="off" onsubmit="return false">
+      <section class="bloque">
+        <h2><span class="num">1</span>Tu producto</h2>
+        <p class="ayuda">Un solo producto por vez. Usá números de una unidad.</p>
+        <div class="campo"><label for="nombre">Nombre <small>Opcional</small></label><div class="inp"><input id="nombre" type="text" placeholder="Ej.: remera" style="text-align:left;font-weight:500"></div></div>
+        <div class="campo"><label for="precio">Precio de venta <small>Lo que te paga el cliente</small></label><div class="inp"><span>$</span><input id="precio" inputmode="decimal" placeholder="0"></div></div>
+        <div class="campo"><label for="costo">Costo del producto <small>Lo que te cuesta la mercadería o los insumos</small></label><div class="inp"><span>$</span><input id="costo" inputmode="decimal" placeholder="0"></div></div>
+        <details>
+          <summary>+ Otros costos por unidad (envase, envío, flete de compra)</summary>
+          <div class="sub">
+            <div class="campo"><label for="envase">Envase o packaging <small>Por unidad</small></label><div class="inp"><span>$</span><input id="envase" inputmode="decimal" placeholder="0"></div></div>
+            <div class="campo"><label for="envio">Envío al cliente <small>Si lo pagás vos, por venta</small></label><div class="inp"><span>$</span><input id="envio" inputmode="decimal" placeholder="0"></div></div>
+            <div class="campo"><label for="flete">Flete de compra <small>Envío que pagás cuando comprás la mercadería, como % de la compra</small></label><div class="inp"><input id="flete" inputmode="decimal" placeholder="0"><span>%</span></div></div>
+            <p class="ayuda" style="margin:8px 0 6px">¿Cómo sacar el % del flete? Flete ÷ total de la compra × 100. Ej.: $25.000 de envío en una compra de $500.000 = 5%.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="bloque">
+        <h2><span class="num">2</span>Lo que te cobran por cada venta</h2>
+        <p class="ayuda">Son porcentajes sobre el precio. Si no usás alguno, dejalo en 0.</p>
+        <div class="campo"><label for="comision">Comisión de la plataforma o del cobro <small>Mercado Libre, Tiendanube, Mercado Pago, tarjeta</small></label><div class="inp"><input id="comision" inputmode="decimal" placeholder="0"><span>%</span></div></div>
+        <div class="campo"><label for="iibb">Ingresos brutos <small>Según tu provincia y actividad</small></label><div class="inp"><input id="iibb" inputmode="decimal" placeholder="0"><span>%</span></div></div>
+        <div class="campo"><label for="otros">Otros porcentajes <small>Cuotas sin interés, comisión a vendedores</small></label><div class="inp"><input id="otros" inputmode="decimal" placeholder="0"><span>%</span></div></div>
+      </section>
+
+      <section class="bloque">
+        <h2><span class="num">3</span>Lo que querés que te quede</h2>
+        <p class="ayuda">El margen: de lo que cobrás, qué porcentaje querés que te quede para cubrir tus gastos fijos y ganar.</p>
+        <div class="campo"><label for="margen">Margen buscado</label><div class="inp"><input id="margen" inputmode="decimal" value="30"><span>%</span></div></div>
+        <details>
+          <summary>+ ¿Cuánto tenés que vender por mes?</summary>
+          <div class="sub">
+            <div class="campo"><label for="fijos">Gastos fijos del mes <small>Alquiler, sueldos, servicios, monotributo</small></label><div class="inp"><span>$</span><input id="fijos" inputmode="decimal" placeholder="0"></div></div>
+          </div>
+        </details>
+      </section>
+    </form>
+
+    <aside class="res" aria-live="polite">
+      <div class="tarjeta" id="tarjeta">
+        <div class="eyebrow" id="r-titulo">De cada venta te queda</div>
+        <div id="r-cuerpo"><p class="vacio">Completá el precio y el costo para ver el resultado.</p></div>
+      </div>
+      <p class="nota">Es una estimación para un producto. Si sos responsable inscripto en IVA, cargá el precio y los costos sin IVA. Los porcentajes cambian según la plataforma, la categoría, el plazo de cobro y la provincia.</p>
+    </aside>
+  </div>
+</main>
+
+<section class="reglas" aria-label="Cómo calcula">
+  <div class="caja">
+    <div><h3>Lo fijo se suma</h3><p>Mercadería, envase, envío y flete son montos por unidad: se suman al costo.</p></div>
+    <div><h3>Los porcentajes se dividen</h3><p>Comisiones e ingresos brutos se cobran sobre el precio: no se suman al costo, se descuentan del precio.</p></div>
+    <div><h3>El margen manda</h3><p>Precio justo = costo ÷ (1 − margen − porcentajes). Así te queda lo que querés de lo que cobrás.</p></div>
+  </div>
+</section>
+
+<footer><b>Saldo a Favor</b> · Números claros para decidir mejor · <a href="index.html">saldoafavor.github.io</a> · <a href="https://instagram.com/saldoafavor.ar" target="_blank" rel="noopener">@saldoafavor.ar</a></footer>
+
+<script>
+const WA = "5493585042012";
+const $ = id => document.getElementById(id);
+function num(id){
+  let s = ($(id).value || "").replace(/[\s$%]/g, "");
+  if (!s) return 0;
+  if (s.includes(",")) s = s.replace(/\./g, "").replace(",", ".");
+  else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
+  const n = parseFloat(s);
+  return isFinite(n) && n > 0 ? n : 0;
+}
+const pesos = n => (n < 0 ? "−$" : "$") + Math.round(Math.abs(n)).toLocaleString("es-AR");
+const pct = n => (Math.round(n * 10) / 10).toLocaleString("es-AR") + "%";
+const pesosRed = n => "$" + (Math.ceil(n / 100) * 100).toLocaleString("es-AR");
+
+function calcular(){
+  const precio = num("precio"), costo = num("costo");
+  const cuerpo = $("r-cuerpo");
+  if (!precio || !costo){
+    cuerpo.innerHTML = '<p class="vacio">Completá el precio y el costo para ver el resultado.</p>';
+    return;
+  }
+  const envase = num("envase"), envio = num("envio"), flete = num("flete") / 100;
+  const pc = num("comision") / 100, pi = num("iibb") / 100, po = num("otros") / 100;
+  const m = num("margen") / 100, fijos = num("fijos");
+  const nombre = $("nombre").value.trim();
+
+  const costoFlete = costo * flete;
+  const costoUnit = costo + costoFlete + envase + envio;
+  const cargos = pc + pi + po;
+  const queda = precio * (1 - cargos) - costoUnit;
+  const quedaPct = queda / precio * 100;
+
+  const filas = [["Precio de venta", pesos(precio), ""]];
+  if (pc) filas.push(["Comisión (" + pct(pc*100) + ")", pesos(-precio*pc), "neg"]);
+  if (pi) filas.push(["Ingresos brutos (" + pct(pi*100) + ")", pesos(-precio*pi), "neg"]);
+  if (po) filas.push(["Otros (" + pct(po*100) + ")", pesos(-precio*po), "neg"]);
+  filas.push(["Costo del producto", pesos(-costo), "neg"]);
+  if (costoFlete) filas.push(["Flete de compra (" + pct(flete*100) + ")", pesos(-costoFlete), "neg"]);
+  if (envase) filas.push(["Envase", pesos(-envase), "neg"]);
+  if (envio) filas.push(["Envío al cliente", pesos(-envio), "neg"]);
+  filas.push(["Te queda", pesos(queda), "tot"]);
+
+  let html = '<div class="grande" style="color:' + (queda < 0 ? '#f0a58f' : '#fbf7ee') + '">' + pesos(queda) + '</div>';
+  html += '<div class="pct">' + (queda < 0 ? "Perdés plata en cada venta" : "Es el " + pct(quedaPct) + " de lo que cobrás") + '</div>';
+  html += '<table class="tabla">' + filas.map(f => '<tr class="' + f[2] + '"><td>' + (f[2]==="neg" ? "− " : f[2]==="tot" ? "= " : "") + f[0] + '</td><td>' + f[1] + '</td></tr>').join("") + '</table>';
+
+  const den = 1 - m - cargos;
+  let precioJusto = null, msg = "";
+  if (den <= 0){
+    msg = '<div class="veredicto mal"><b>Revisá los porcentajes.</b> El margen que buscás más lo que te cobran por venta suman 100% o más, y así no hay precio que alcance.</div>';
+  } else {
+    precioJusto = costoUnit / den;
+    if (queda < 0) msg = '<div class="veredicto mal"><b>Con este precio perdés ' + pesos(-queda) + ' por venta.</b> Para que te quede el ' + pct(m*100) + ', deberías venderlo a <b>' + pesosRed(precioJusto) + '</b>.</div>';
+    else if (quedaPct + 0.05 < m*100) msg = '<div class="veredicto bajo"><b>Te queda el ' + pct(quedaPct) + ', menos que el ' + pct(m*100) + ' que buscás.</b> Para llegar, el precio debería ser <b>' + pesosRed(precioJusto) + '</b>.</div>';
+    else msg = '<div class="veredicto ok"><b>Bien: te queda el ' + pct(quedaPct) + ', igual o más que el ' + pct(m*100) + ' que buscás.</b> El precio mínimo para tu margen es ' + pesosRed(precioJusto) + '.</div>';
+  }
+  html += msg;
+
+  let lineaEq = "";
+  if (fijos){
+    if (queda > 0){
+      const u = Math.ceil(fijos / queda);
+      html += '<div class="equilibrio">Para cubrir ' + pesos(fijos) + ' de gastos fijos tenés que vender <b>' + u.toLocaleString("es-AR") + ' unidades por mes</b> de este producto (o su equivalente en otros).</div>';
+      lineaEq = "\nPara cubrir los gastos fijos necesito vender " + u + " unidades por mes.";
+    } else {
+      html += '<div class="equilibrio">Con este precio no hay cantidad de ventas que cubra tus gastos fijos: cada venta suma pérdida.</div>';
+    }
+  }
+
+  const texto = "Hola Josefina, usé la calculadora de tu página" + (nombre ? " con mi producto \"" + nombre + "\"" : "") + ".\n" +
+    "Precio: " + pesos(precio) + " · Costo: " + pesos(costo) + " · Cargos por venta: " + pct(cargos*100) + "\n" +
+    "Me queda: " + pesos(queda) + (queda >= 0 ? " (" + pct(quedaPct) + ")" : "") +
+    (precioJusto ? "\nPrecio para el " + pct(m*100) + " de margen: " + pesosRed(precioJusto) : "") + lineaEq +
+    "\n¿Lo revisamos juntos?";
+  html += '<a class="cta" target="_blank" rel="noopener" href="https://wa.me/' + WA + '?text=' + encodeURIComponent(texto) + '">¿Lo revisamos juntos? Escribime →</a>';
+  cuerpo.innerHTML = html;
+}
+document.querySelectorAll("input").forEach(i => i.addEventListener("input", calcular));
+document.querySelectorAll('.inp span:first-child + input').forEach(i => i.addEventListener("blur", () => { const v = num(i.id); if (v) i.value = Math.round(v).toLocaleString("es-AR"); }));
+calcular();
+</script>
+</body>
+</html>
